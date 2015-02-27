@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <title>Hello World</title>
+    </head>
+    <body>
+    <script type="text/javascript" src="cordova.js"></script>
+        <!--<script type="text/javascript" src="js/index.js"></script>-->
+          <!--<script src="js/hammer.js"></script>-->
+  		<script src="js/app.js"></script>
+  		<script src="js/content.js"></script>
+  		<script src="js/getgps.js"></script>
+  		<script src="js/getcontacts.js"></script>
+     <div id="myApp">
+<!-- application title bar -->
+<header class="apptitle">
+  <h1>A is for awesome</h1>
+</header>
+<!-- tabbed navigation bar -->
+<nav class="tabs">
+  <ul>
+    <li class="li-1-3"><a href="#home" data-role="link" class="activetab" data-transition="slide" id="svghome"><span class="hidden" title="Home">Home</span>
+    </a></li>
+    <li class="li-1-3"><a href="#map" data-role="link" class="inactivetab" data-transition="slide" id="svgmap"><span class="hidden" title="Your Location">Map</span></a></li>
+    <li class="li-1-3"><a href="#contacts" data-role="link" class="inactivetab" data-transition="slide" id="svgcontacts"><span class="hidden" title="Login">Contacts</span></a></a></li>
+  </ul>
+</nav>
+<div class="page-wrap">
+<section data-role="page" id="home">
+  <div data-role="content" data-overlay-theme="b" data-transition="slidedown">
+  <h1>Welcome!</h1>
+  <p>My name is Anna.</p>
+  <p>The "A" in my name is for awesome.</p>
+  <p>My app consists of 3 webpages:</p>
+  <ul>
+  	<li>The first webpage explains my application.</li>
+    <li>The second webpage displays your location.</li>
+    <li>The third webpage will display a list of your contacts.</li>
+  </ul>
+  </div>
+</section>
+<section data-role="page" id="map"  data-overlay-theme="b">
+  <div data-role="content" data-overlay-theme="b" data-transition="slidedown">
+  	<h1>Login</h1>
+    <p>We know where you're coming from, so be nice...</p>
+  	<div id="canvasdiv"></div>
+   </div>
+</section>
+<section data-role="page" id="contacts"  data-overlay-theme="b">
+  <div data-role="content" data-overlay-theme="b" data-transition="slidedown">
+  	<h1>About</h1>
+  	<p>The Contacts page will be loaded here...</p>
+    <div id="showcontacts"></div>
+   </div>
+</section>
+
+</div>
+<section data-role="footer" id="footer" data-overlay-theme="b">
+<footer class="site-footer">
+ <p>&copy; Anna Ioudovskaya 2015. All rights reserved.</p>
+</footer>
+</section>
+    </body>
+</html>

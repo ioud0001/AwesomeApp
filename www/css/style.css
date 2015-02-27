@@ -1,0 +1,305 @@
+@charset "utf-8";
+/* CSS Document */
+/*
+Monochromatic color scheme:
+grey: #7D7F7F
+light-grey: #C8CCCC
+cyan: #14E9FF
+white: #FAFFFF
+*/
+html{
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+	width:100%;
+  overflow:hidden;
+  background-color:#333;
+  font-family: Calibri, Arial, Helvetica, sans-serif;
+}
+body{
+	background-color: #D3D3D3;
+}
+html, body {
+	height: 100%;
+}
+[data-role="page"].active{
+  z-index: 20;
+  transform: matrix;
+  transition: background-color 2s ease;
+}
+h1{
+  padding: 0.5rem 2rem;
+  font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
+}
+
+
+
+/**************************************
+          DEFAULTS
+***************************************/
+*{
+	padding:0;
+	margin:0;	
+}
+html {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+html, body{
+	background-color: #000;
+	/*#e4e4e4; This can be changed to match the page backgrounds */	
+}
+body{
+	font-size:5vmin;	/* set the starting size for the app */
+}
+h2{
+	font-size:2.4rem;
+	line-height:1.6;
+	font-family:Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", serif;	
+}
+p{
+	font-size:1rem;
+	padding-left: 0.5rem;
+	line-height:2;
+	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;	
+}
+
+ul li{
+	font-size: 1rem;
+	list-style-type: circle;
+	list-style-position: inside;
+}
+.logo{
+	width: 80%;
+	height: 70%;
+}
+/**************************************
+          PAGES
+***************************************/
+[data-role="page"]{
+  position:absolute; 
+  /*top: 8rem; */
+  color: #bbb;	
+  z-index: 10;
+  width: 100%;
+  overflow: scroll;
+   /*** Items to trigger hardware acceleration ***/
+    -webkit-backface-visibility: hidden;
+   -moz-backface-visibility: hidden;
+   -ms-backface-visibility: hidden;
+   backface-visibility: hidden;
+   -webkit-perspective: 1000;
+   -moz-perspective: 1000;
+   -ms-perspective: 1000;
+   perspective: 1000;
+   -webkit-transform: translate3d(0, 0, 0);
+   -moz-transform: translate3d(0, 0, 0);
+   -ms-transform: translate3d(0, 0, 0);
+   /transform: translate3d(0, 0, 0);
+   	transition: background-color 0.9s ease;
+	/*transform: skew(10px,5px) rotate(45);*/
+	transform: matrix;
+	animation: ease-in;
+}
+[data-role=page].activetab{ 
+  left: 0;
+  right: 0;
+  z-index: 5;
+  /*background-color:#333;*/
+  border-top:1px solid #666;
+}
+
+
+[data-role="page"].show{
+  display:block;
+  
+  
+}
+
+[data-role="page"].hidden{
+  
+  display:none;
+}
+
+[data-transition=slide]{
+	transition: background-color 0.5s ease;
+	/*transform: skew(10px,5px) rotate(45);*/
+	transform: matrix;
+	animation: ease-in;
+}
+
+/**************************************
+          TITLE
+***************************************/
+.apptitle{
+	background-color: #333;
+	color: #fff;
+	overflow: visible;
+	
+}
+.apptitle h1{
+	font-size: 2rem;
+	/*line-height: 3rem;*/
+	padding: 0.5rem 1.0rem;
+	text-align:center;
+	letter-spacing: 10px;
+	word-spacing: 10px;
+	text-transform:uppercase;
+	font-family:Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", serif;	
+}
+
+/**************************************
+          NAVBAR 
+***************************************/
+nav{
+	
+  height:3rem;
+  width:100%;
+  
+}
+
+.tabs{
+	
+	height: 4rem;
+	margin-bottom: 0px;
+	bottom: 0px;
+	
+}
+
+.tabs ul{
+	list-style:none;
+	overflow:hidden;	
+	width: 100%;
+}
+.tabs ul li{
+	list-style:none;
+	overflow:hidden;
+}
+.tabs li{
+	float:left;
+	height:4rem;
+}
+
+.tabs li.tab{
+		background-color:#444;
+	float:left; 
+	height:2rem;
+	display:inline-block;
+	width:33.3333%;
+}
+
+.tabs li a{
+	display: block;
+	padding: 0.5rem 2rem;
+	font-size: 2rem;
+	line-height: 2rem;
+	height: 2rem;
+	color: #fff;
+	text-decoration: none !important;
+	border: none;
+	background-color: #555;
+	text-align: center;
+}
+
+.li-1-3{
+	width: 33.2%;	
+	/* for 3 tabs each is 33% */
+}
+
+/* tabs with text and background */
+.tabs > a:link{
+	text-decoration: none;
+}
+.tabs [data-role=link]{
+	color: #777;	
+	background: #aaa;
+	display:block;
+	background-position: top;
+	text-align:center;
+	height:4rem;
+	font-size:1.5rem;
+	font-weight:bold;
+	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;	
+	line-height:2rem;
+	padding:1.5rem 1rem;
+	/* shadow helps make the non-active tabs receed */
+	-webkit-box-shadow: inset 2px 6px 6px rgba(0,0,0, 0.5);
+	-moz-box-shadow: inset 2px 6px 6px rgba(0,0,0, 0.5); 
+	box-shadow: inset 2px 6px 6px rgba(0,0,0, 0.5);
+}
+.tabs [data-role=link].activetab{
+	background:#000;	/* match the background of the screen */
+	color: #0cf;		/* colour makes the active tab jump forward */
+	background-position: top;
+	-webkit-box-shadow:none;
+	-moz-box-shadow:none;
+	box-shadow:none;
+	
+	-webkit-box-shadow: inset 6px 5px 0px rgba(0,0,0, 0.5);
+	-moz-box-shadow: inset 6px 5px 0px rgba(0,0,0, 0.5); 
+	box-shadow: inset 6px 6px 5px rgba(0,0,0, 0.5);
+	
+	
+}
+[data-role=link].activetab#svghome{
+	
+	background-image: url(../img/tabicons/tab-home-normal.png);
+	background-repeat: no-repeat !important;
+	height: 2rem;
+}
+
+[data-role=link].inactivetab#svghome{
+	background-image: url(../img/tabicons/tab-home.png);
+	background-repeat: no-repeat !important;
+	height: 2rem;
+}
+
+[data-role=link].activetab#svgmap{
+	background-image: url(../img/tabicons/tab-map-normal.png);
+	background-repeat: no-repeat !important;
+	height: 2rem;
+}
+
+[data-role=link].inactivetab#svgmap{
+	background-image: url(../img/tabicons/tab-map.png);
+	background-repeat: no-repeat !important;
+}
+
+
+[data-role=link].activetab#svgcontacts{
+	background-image: url(../img/tabicons/tab-contacts-normal.png);
+	background-repeat: no-repeat !important;
+	height: 2rem;
+}
+
+[data-role=link].inactivetab#svgcontacts{
+	background-image: url(../img/tabicons/tab-contacts.png);
+	background-repeat: no-repeat !important;
+	height: 2rem;
+}
+[data-role=footer]{
+	margin-top: 500px;
+}
+[data-role=footer], .page-wrap:after {
+  /* .push must be the same height as footer */
+	/* height: 50px; */
+}
+.page-wrap{
+	  min-height: 100%;
+  /* equal to footer height */
+	margin-bottom: 10px; 
+}
+.site-footer {
+  background: #bbb;
+  color: black;
+
+  
+}
+
+alert{
+	color: #A31114;
+	text-decoration: blink;
+}
+
+
+
+
