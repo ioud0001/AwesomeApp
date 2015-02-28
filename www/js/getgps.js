@@ -1,14 +1,9 @@
 // JavaScript Document
-function getLocation(){
-	var parameters = {maximumAge: 0, timeout: 10000, enableHighAccuracy:true};
-	if (navigator.geolocation)
-				navigator.geolocation.getCurrentPosition(reportGPS, gpsError, parameters);
-	else
-	alert("nothing works for me!");
-}
 function reportGPS( position ){ 
 	// create the canvas area  
+	 
 	var canvasdiv = document.getElementById("canvasdiv");
+	
 	//var context = canvas.getContext("2d");
 	var dimensions = 350;
 

@@ -3,7 +3,7 @@
 var links = [];
 var numLinks = 0;
 var pageTime = 800;//same as CSS transition
-
+var status = document.createElement("p");
 //create the pageShow type event.
 var pageshow = document.createEvent("CustomEvent");
 pageshow.initEvent("pageShow", false, true);
@@ -42,17 +42,26 @@ function handleNav(ev){
 
 function handlePageShow(ev){
   ev.target.className = "active";
-  if (ev.target.id == "login")
+  			if (ev.target.id == "map")
 			  {
 				  var parameters = {maximumAge: 0, timeout: 10000, enableHighAccuracy:true};
-				  if (navigator.geolocation)
+				  if (navigator.geolocation){
+					  if (status.innerHTML == ""){
+							status.innerHTML = "Loading the map...";
+							document.getElementById("map").appendChild(status); 
+				  		} 
+						else {
+					  	 status.innerHTML  = "Loading the map...";
+						}
 				  	navigator.geolocation.getCurrentPosition(reportGPS, gpsError, parameters);
+					status.innerHTML = "Loading completed..."; 
+				  }
 				else
 					alert("nothing works for me!");
 	  		}
 	 		else if (ev.target.id == "contacts")
 	  		{
-				showPeople();
+				checkContacts();
 			
 	 	 	}
 			else
@@ -70,12 +79,12 @@ function loadPage( url ){
 		for (var i = 0; i < pageCount; i++)
 		{
 			pages[0].className = "active";
-			pages[i].className = "hidden";
+			pages[i].className = "";
 		}
 		history.replaceState(null, null, "#home");
 	}else{
      for(var i=0; i < numPages; i++){
-	  pages[i].className = "hidden";
+	  pages[i].className = "";
       //get rid of all the hidden classes
       //but make them display block to enable anim.
 	  

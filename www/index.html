@@ -24,11 +24,15 @@
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        
         <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Sarpanch:800' rel='stylesheet' type='text/css'>
         <title>Hello World</title>
     </head>
     <body>
     <script type="text/javascript" src="cordova.js"></script>
+    <script src="js/hammer.js"></script>
         <!--<script type="text/javascript" src="js/index.js"></script>-->
           <!--<script src="js/hammer.js"></script>-->
   		<script src="js/app.js"></script>
@@ -50,33 +54,34 @@
   </ul>
 </nav>
 <div class="page-wrap">
-<section data-role="page" id="home">
+<div data-role="page" id="home">
   <div data-role="content" data-overlay-theme="b" data-transition="slidedown">
   <h1>Welcome!</h1>
   <p>My name is Anna.</p>
-  <p>The "A" in my name is for awesome.</p>
+  <p>The "A" in my name stands for awesome.</p>
   <p>My app consists of 3 webpages:</p>
   <ul>
   	<li>The first webpage explains my application.</li>
     <li>The second webpage displays your location.</li>
-    <li>The third webpage will display a list of your contacts.</li>
+    <li>The third webpage displays a random contact.</li>
   </ul>
   </div>
-</section>
-<section data-role="page" id="map"  data-overlay-theme="b">
+</div>
+<div data-role="page" id="map"  data-overlay-theme="b">
   <div data-role="content" data-overlay-theme="b" data-transition="slidedown">
-  	<h1>Login</h1>
+  	<h1>Your Location:</h1>
     <p>We know where you're coming from, so be nice...</p>
+    
   	<div id="canvasdiv"></div>
    </div>
-</section>
-<section data-role="page" id="contacts"  data-overlay-theme="b">
+</div>
+<div data-role="page" id="contacts"  data-overlay-theme="b">
   <div data-role="content" data-overlay-theme="b" data-transition="slidedown">
-  	<h1>About</h1>
-  	<p>The Contacts page will be loaded here...</p>
+  	<h1>Contacts</h1>
+  	<p>The contacts take a while to load but they'll show up here...</p>
     <div id="showcontacts"></div>
    </div>
-</section>
+</div>
 
 </div>
 <section data-role="footer" id="footer" data-overlay-theme="b">

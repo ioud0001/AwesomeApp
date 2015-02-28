@@ -7,28 +7,37 @@ light-grey: #C8CCCC
 cyan: #14E9FF
 white: #FAFFFF
 */
+*{
+		padding:0;
+		margin:0;	
+}
 html{
     -ms-touch-action: manipulation;
     touch-action: manipulation;
 	width:100%;
-  overflow:hidden;
+	height:100%;
   background-color:#333;
   font-family: Calibri, Arial, Helvetica, sans-serif;
 }
 body{
 	background-color: #D3D3D3;
-}
-html, body {
 	height: 100%;
+	color: #bbb;
+}
+
+#myapp{
+	left: 0;
 }
 [data-role="page"].active{
+
   z-index: 20;
-  transform: matrix;
   transition: background-color 2s ease;
+  transform: matrix(1.06, 1.84, 0.54, 2.8, 100px, 100px);
+    
 }
 h1{
-  padding: 0.5rem 2rem;
-  font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
+  
+  
 }
 
 
@@ -43,6 +52,7 @@ h1{
 html {
     -ms-touch-action: manipulation;
     touch-action: manipulation;
+
 }
 html, body{
 	background-color: #000;
@@ -54,19 +64,27 @@ body{
 h2{
 	font-size:2.4rem;
 	line-height:1.6;
-	font-family:Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", serif;	
 }
 p{
 	font-size:1rem;
-	padding-left: 0.5rem;
+	padding: 0.5rem 2rem;
 	line-height:2;
-	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;	
 }
-
-ul li{
+h1{
+	padding: 0.5rem 2rem;
+}
+h1, h2, p, ul li{
+	font-family: 'Special Elite', cursive;
+}
+[data-role="page"] ul{
+	padding-left: 0.7rem;
+}
+[data-role="page"] ul li{
 	font-size: 1rem;
 	list-style-type: circle;
 	list-style-position: inside;
+	padding-left: 2rem; 
+	 
 }
 .logo{
 	width: 80%;
@@ -76,13 +94,14 @@ ul li{
           PAGES
 ***************************************/
 [data-role="page"]{
-  position:absolute; 
-  /*top: 8rem; */
-  color: #bbb;	
-  z-index: 10;
-  width: 100%;
-  overflow: scroll;
-   /*** Items to trigger hardware acceleration ***/
+	position:absolute; 
+   left: 100%;
+   right:0;
+   display: compact;
+	transition: all 3s ease-out; 
+	color: #000;
+		overflow: hidden;
+  /*** Items to trigger hardware acceleration ***/
     -webkit-backface-visibility: hidden;
    -moz-backface-visibility: hidden;
    -ms-backface-visibility: hidden;
@@ -91,33 +110,38 @@ ul li{
    -moz-perspective: 1000;
    -ms-perspective: 1000;
    perspective: 1000;
-   -webkit-transform: translate3d(0, 0, 0);
-   -moz-transform: translate3d(0, 0, 0);
-   -ms-transform: translate3d(0, 0, 0);
-   /transform: translate3d(0, 0, 0);
-   	transition: background-color 0.9s ease;
-	/*transform: skew(10px,5px) rotate(45);*/
-	transform: matrix;
-	animation: ease-in;
+   -ms-transform: rotate(138deg); /* IE 9 */
+    -webkit-transform: rotate(138deg); /* Chrome, Safari, Opera */
+    transform: rotate(138deg);
+	transform: scale(0.5);
+}
+
+[data-role="page"] img{
+	transition: all 3s ease-out;
+	transform: scale(0.1);
 }
 [data-role=page].activetab{ 
-  left: 0;
-  right: 0;
   z-index: 5;
   /*background-color:#333;*/
   border-top:1px solid #666;
 }
 
 
-[data-role="page"].show{
-  display:block;
-  
-  
+[data-role="page"].active{
+	left:0;
+	display: block;
+	z-index: 10;
+	width: 100%;
+	transition: left 0.5s ease-in;
+	color: #bbb;
+	-ms-transform: none; /* IE 9 */
+    -webkit-transform: none;/* Chrome, Safari, Opera */
+    transform: none;
 }
 
-[data-role="page"].hidden{
-  
-  display:none;
+/* pops the image */
+[data-role="page"].active img{
+	transform: scale(1);
 }
 
 [data-transition=slide]{
@@ -131,6 +155,8 @@ ul li{
           TITLE
 ***************************************/
 .apptitle{
+	margin-bottom: 0px;
+	bottom: 0px;
 	background-color: #333;
 	color: #fff;
 	overflow: visible;
@@ -216,9 +242,8 @@ nav{
 	background-position: top;
 	text-align:center;
 	height:4rem;
-	font-size:1.5rem;
-	font-weight:bold;
-	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;	
+	font-size:1.2rem;
+	font-family: 'Sarpanch', sans-serif;
 	line-height:2rem;
 	padding:1.5rem 1rem;
 	/* shadow helps make the non-active tabs receed */
@@ -271,6 +296,9 @@ nav{
 	height: 2rem;
 }
 
+#contactsdiv{
+	overflow: auto;
+}
 [data-role=link].inactivetab#svgcontacts{
 	background-image: url(../img/tabicons/tab-contacts.png);
 	background-repeat: no-repeat !important;
@@ -298,6 +326,21 @@ nav{
 alert{
 	color: #A31114;
 	text-decoration: blink;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  /* Styles */
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+  /* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+  /* Styles */
 }
 
 

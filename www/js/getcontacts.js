@@ -27,18 +27,27 @@ function checkContacts(){
 
 function showContacts(matches){
 	var contacts = document.getElementById("showcontacts"); 
-	var randomid = Math.floor(Math.random * matches.length); 
-	alert(matches.length);
+	var randomid = Math.floor(Math.random() * matches.length); 
+	//alert(matches.length);
 	var p = document.createElement("p");
-	p.innerHTML = matches[randomid].displayName;
+	var ul = document.createElement("ul");
+	var li = document.createElement("li"); 
+		//alert("the id is : " + randomid);
+	//alert(matches[randomid].displayName);
+
+	var name = matches[randomid].displayName;
+	if (!name)
+		name = 	matches[randomid].name.nickname; 
+	if (name == null)
+		name == "No name added..."; 
+	p.innerHTML = "Name : " + name;
+	for (var count = 0; count < matches[randomid].phoneNumbers.length; count++){
+		li.innerHTML = matches[randomid].phoneNumbers[count].value + " (" + matches[randomid].phoneNumbers[count].type + ")"; 
+		ul.appendChild(li);
+	}
 	contacts.appendChild(p);
-	/*
-		for( var i=0; i<matches.length; i++){
-		contacts.appendChild(p);
-		p.innerHTML =  matches[randomid].displayName;
-		contacts.appendChild(p);
-		}
-	*/
+	 
+	contacts.appendChild(ul);
 }
 
 function searchError(){
