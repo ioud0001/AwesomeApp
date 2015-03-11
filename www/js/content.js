@@ -7,11 +7,13 @@ var status = document.createElement("p");
 //create the pageShow type event.
 var pageshow = document.createEvent("CustomEvent");
 pageshow.initEvent("pageShow", false, true);
+
 function detectTouchSupport( ){
    msGesture = navigator && navigator.msPointerEnabled && navigator.msMaxTouchPoints > 0 && MSGesture;
    touchSupport = (("ontouchstart" in window) || msGesture || (window.DocumentTouch && document instanceof DocumentTouch));
    return touchSupport;
 }
+
 function loadNav(){
 	//device ready listener
 	
@@ -21,13 +23,37 @@ function loadNav(){
 	numLinks = links.length;
 	
 	for(var i=0;i<numLinks; i++){
-		links[i].addEventListener("click", handleNav, false);	
+		links[i].addEventListener("touchend", touchHandler, false);	
 	}
   //add the listener for pageshow to each page
   for(var p=0; p < numPages; p++){
     pages[p].addEventListener("pageShow", handlePageShow, false);
   }
 	loadPage(null);
+}
+
+function touchHandler(ev){
+  //this function will run when the touch events happen
+  if( ev.type == "touchend"){
+    ev.preventDefault();
+    var touch = ev.changedTouches[0];        //this is the first object touched
+    
+    var newEvt = document.createEvent("MouseEvent");	//old method works across browsers, though it is deprecated.
+    /**
+    event.initMouseEvent(type, canBubble, cancelable, view,
+                     detail, screenX, screenY, clientX, clientY,
+                     ctrlKey, altKey, shiftKey, metaKey,
+                     button, relatedTarget); **/
+    newEvt.initMouseEvent("click", true, true, window, 1, touch.screenX, touch.screenY, touch.clientX, touch.clientY);
+    //var newEvt = new MouseEvent("click");				//new method
+    //REF: https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent.MouseEvent
+    ev.currentTarget.dispatchEvent(newEvt);
+    //change the touchend event into a click event and dispatch it immediately
+    //this will skip the built-in 300ms delay before the click is fired by the browser
+  }
+ handleNav(ev)
+  // the event is "touchend" instead of click
+  // the function is touchHandler instead of handleNav for the event clicker 
 }
 
 function handleNav(ev){
@@ -41,9 +67,10 @@ function handleNav(ev){
 }
 
 function handlePageShow(ev){
-  ev.target.className = "active";
+
   			if (ev.target.id == "map")
 			  {
+				    //ev.target.className = "active";
 				  var parameters = {maximumAge: 0, timeout: 10000, enableHighAccuracy:true};
 				  if (navigator.geolocation){
 					  if (status.innerHTML == ""){
@@ -61,6 +88,7 @@ function handlePageShow(ev){
 	  		}
 	 		else if (ev.target.id == "contacts")
 	  		{
+				  //ev.target.className = "active";
 				checkContacts();
 			
 	 	 	}
@@ -70,52 +98,36 @@ function handlePageShow(ev){
 
 function loadPage( url ){
 	
-	console.log("the url is : " + url);
-	if(url == null){
-		//home page first call
-		var pageCount = pages.length; 
-		
-		// hide the other pages and display the home page 
+	//console.log("the url is : " + url);
+	var pageCount = pages.length;
+	
 		for (var i = 0; i < pageCount; i++)
 		{
-			pages[0].className = "active";
 			pages[i].className = "";
+			if (url == null){
+				pages[0].className = "active";
+				pages[i].className = "";
+				history.replaceState(null, null, "#home");
+			} else if (pages[i].id == url){
+				//var id = pages[i].id;
+					pages[i].className = "active";
+				history.pushState(null, null, "#" + url);
+				 setTimeout(addDispatch, 50, i); 
+			}
+			//pages[i].className = "";
+			
+			otherIcons = "svg" + pages[i].id;
 		}
-		history.replaceState(null, null, "#home");
-	}else{
-     for(var i=0; i < numPages; i++){
-	  pages[i].className = "";
-      //get rid of all the hidden classes
-      //but make them display block to enable anim.
-	  
-	  otherIcons = "svg" + pages[i].id; 
-      if(pages[i].id == url){
-        pages[i].className = "active";
-        //add active to the proper page
-        history.pushState(null, null, "#" + url);
-        setTimeout(addDispatch, 50, i);
-		 
-      }
-	  else if (pages[i].id == "map"){
-		  this.addEventListener('click', this.getLocation);
-	  }
-	  else if (pages[i].id == "contacts"){
-	   	this.addEventListener('click', this.checkContacts);
-	  }
-	
-    }
-
     //set the activetab class on the nav menu
 	// check the CSS, this will also change the icon state
     for(var t=0; t < numLinks; t++){
-	  //links[t].className = "";
-	  
+
       if(links[t].href == location.href)
         links[t].className = "activetab";
 	else
         links[t].className = "inactivetab";
     }
-  }
+  
 }
 
 
