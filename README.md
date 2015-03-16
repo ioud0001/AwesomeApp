@@ -6,7 +6,7 @@ Cordova Project using geolocation, and contacts
 This application consists of the following 2 features: 
 - Your location is determined and displayed on page 2. 
 - A random contact is generated each time you hit the "Contacts" tab. 
------------------------
+
 - You can view the live preview [here](http://ioud0001.github.io/AwesomeApp/www/) 
 - Download the APK file here:  [here](https://github.com/ioud0001/AwesomeApp/tree/master/platforms/android/ant-build)
 ####How it works: 
